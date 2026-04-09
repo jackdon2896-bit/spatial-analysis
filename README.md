@@ -1,4 +1,3 @@
-<img width="739" height="553" alt="image" src="https://github.com/user-attachments/assets/874aab75-b0ec-4281-afa8-b5b2f70f8fe3" /># spatial-analysis
 # scRNA-seq and Spatial Transcriptomics Integration Pipeline
 This repository presents a complete workflow for integrating single-cell RNA sequencing (scRNA-seq) data with spatial transcriptomics images using modern computational tools. The pipeline focuses on efficient preprocessing, accurate cell annotation, and spatial mapping using image-based segmentation.
 
