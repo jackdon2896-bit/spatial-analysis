@@ -1,23 +1,12 @@
 #! usr/bin/env nextflow
-process PREPROCESS_IMAGES {
-    // Save results back to your S3 bucket
-    publishDir "s3://your-bucket-name/processed_results/", mode: 'copy'
+nextflow.enable.dsl=2
 
-    input:
-    path tiff_file // Nextflow automatically downloads this from S3 for you
-
-    output:
-    path "cropped_${tiff_file.baseName}.tif"
-
-    script:
-    """
-    python process_scrna.py ${tiff_file} "cropped_${tiff_file.baseName}.tif"
-    """
-}
+include { CROP_AND_COMPRESS } from './modules/process_tiff.nf'
 
 workflow {
-    // Define the S3 path here
-    images_ch = Channel.fromPath('s3://your-bucket-name/raw_data/*.tif')
-    
-    PREPROCESS_IMAGES(images_ch)
+    // Step 1: Download from public S3 via Channel
+    tiff_ch = Channel.fromPath(params.input_s3)
+
+    // Step 2 & 3: Run the Python process from the module
+    CROP_AND_COMPRESS(tiff_ch)
 }
