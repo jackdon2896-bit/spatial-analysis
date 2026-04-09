@@ -1,17 +1,21 @@
+// Public S3 Access (No credentials needed)
 aws {
-    region = 'us-east-1' // Change to your bucket's region
+    region = 'us-east-1' 
     client {
         anonymous = true
     }
 }
 
 params {
+    // Input from your public bucket
     input_s3  = 's3://tiffimage/tiffimage/*.tif'
+    // Folder where results will be saved locally
     outdir    = './results'
 }
 
 process {
     withName: 'CROP_AND_COMPRESS' {
-        conda = 'conda-forge::tifffile conda-forge::numpy'
+        // Includes imagecodecs (required for zlib compression)
+        conda = 'conda-forge::tifffile conda-forge::numpy conda-forge::imagecodecs'
     }
 }
