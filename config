@@ -1,21 +1,24 @@
-// Public S3 Access (No credentials needed)
+// AWS Configuration for Public S3 Access
 aws {
-    region = 'us-east-1' 
+    region = 'us-east-1'
     client {
-        anonymous = true
+        anonymous = true // Critical: Allows access to public buckets
     }
 }
 
 params {
-    // Input from your public bucket
+    // Ensure these match your script variables
     input_s3  = 's3://tiffimage/tiffimage/*.tif'
-    // Folder where results will be saved locally
     outdir    = './results'
 }
 
 process {
+    // Use the exact process name from your main.nf
     withName: 'CROP_AND_COMPRESS' {
-        // Includes imagecodecs (required for zlib compression)
+        // Conda directive for dependency management
         conda = 'conda-forge::tifffile conda-forge::numpy conda-forge::imagecodecs'
     }
 }
+
+// Enable Conda support globally
+conda.enabled = true
