@@ -32,6 +32,9 @@ This repository presents a complete workflow for integrating single-cell RNA seq
 - Identify spatial patterns of cell types
 - Analyze neighborhood interactions
 
+# Workflow diagram
+<img width="739" height="553" alt="image" src="https://github.com/user-attachments/assets/006079ef-f6fd-449a-b8eb-1f0b803d47a3" />
+
 # Tools & Technologies
 Python
 Scanpy
@@ -51,6 +54,3 @@ NumPy / Pandas / Matplotlib
 Add multi-omics integration (e.g., metabolomics)
 Improve segmentation using deep learning models
 Automate pipeline using workflow managers (Snakemake / Nextflow)
-
-
-<img width="739" height="553" alt="image" src="https://github.com/user-attachments/assets/006079ef-f6fd-449a-b8eb-1f0b803d47a3" />
