@@ -1,0 +1,13 @@
+aws {
+    accessKey = 'YOUR_ACCESS_KEY'
+    secretKey = 'YOUR_SECRET_KEY'
+    region    = 'us-east-1' // Change to your bucket's region
+}
+
+// Ensure the process knows where to find the Python dependencies
+process {
+    withName: PREPROCESS_IMAGES {
+        // Option A: Use a Conda environment for tifffile
+        conda = 'conda-forge::tifffile conda-forge::numpy'
+    }
+}
