@@ -1,8 +1,6 @@
 #! usr/bin/env nextflow
 nextflow.enable.dsl=2
 
-nextflow.enable.dsl=2
-
 // Import from your new modules folder
 include { CROP_AND_COMPRESS } from './modules/process_tiff.nf'
 
